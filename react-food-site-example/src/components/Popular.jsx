@@ -7,6 +7,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide'
 import Card from './ui/card'
 import Gradient from './ui/gradient'
 import '@splidejs/splide/dist/css/splide.min.css'
+import { Link } from 'react-router-dom'
 export const Popular = () => {
   const [popular, setPopular] = useState([]);
   const localstorageKey = "popular";
@@ -49,11 +50,14 @@ export const Popular = () => {
       >
         {popular.map((item, idx) => {
           return <SplideSlide key={idx}>
-            <Card> 
+            <Card>
+              <Link to={`/details/${item.id}`}>
             <p>{item.title}</p> 
             <img src={item.image} alt={item.title}/>
             <Gradient/>
+            </Link>
           </Card>
+          
           </SplideSlide>
         })}
       </Splide>
